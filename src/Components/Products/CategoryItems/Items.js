@@ -11,20 +11,21 @@ const Items = () => {
 
     useEffect(() => {
         const fetchServices = async () => {
-            const response = await fetch(`http://localhost:5000/products`);
+            const response = await fetch(`https://used-product-sell-server-one.vercel.app/products`);
             const data = await response.json();
             setProducts(data);
-            console.log(data);
             setIsFetching(false);
         };
         fetchServices();
     }, []);
     return (
         <>
-            <div>
-
+            <div className='text-center'>
+                <div className='sm:text-2xl text-xl inline-block border-b-4 border-green-400 rounded px-4 mt-8 text-stromboli font-medium lg:mt-12 '>
+                    <h1>Our Products</h1>
+                </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 my-7 lg:ml-12 mx-6">
                 {products.map((product) => (
                     <AllServices
                         key={product._id}

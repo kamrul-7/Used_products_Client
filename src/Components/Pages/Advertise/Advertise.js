@@ -9,7 +9,7 @@ const Advertise = () => {
     const [productItem, setProductItem] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/advertisements")
+        fetch("https://used-product-sell-server-one.vercel.app/advertisements")
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);
@@ -22,10 +22,12 @@ const Advertise = () => {
 
     return (
         <>
-            <h2 className="text-4xl font-semibold font-mono text-center my-8 lg:mt-14">
-                Adverstisements
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-7">
+            <div className='text-center'>
+                <div className='sm:text-2xl text-xl inline-block border-b-4 border-green-400 rounded px-4 mt-8 text-stromboli font-medium lg:mt-12 mb-12'>
+                    <h1>Advertise Items</h1>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2">
                 {products.map((product) => (
                     <EachItem
                         key={product._id}

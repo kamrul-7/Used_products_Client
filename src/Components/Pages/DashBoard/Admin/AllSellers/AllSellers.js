@@ -8,7 +8,7 @@ const AllSellers = () => {
     const [postReviewChange, setpostReviewChnage] = useState({});
     useEffect(() => {
         axios
-            .get("http://localhost:5000/lists/seller")
+            .get("https://used-product-sell-server-one.vercel.app/lists/seller")
             .then((res) => setSellers(res.data));
     }, [postReviewChange]);
 
@@ -20,7 +20,7 @@ const AllSellers = () => {
             return;
         }
         fetch(
-            `http://localhost:5000/users/${seller._id}`,
+            `https://used-product-sell-server-one.vercel.app/users/${seller._id}`,
             {
                 method: "DELETE",
             }
@@ -42,7 +42,7 @@ const AllSellers = () => {
             return;
         }
         fetch(
-            `http://localhost:5000/sellers/${seller._id}`,
+            `https://used-product-sell-server-one.vercel.app/sellers/${seller._id}`,
             {
                 method: "PATCH",
                 headers: {
@@ -65,10 +65,10 @@ const AllSellers = () => {
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Buyer Name</th>
+                            <th>Seller Name</th>
                             <th>Email</th>
-                            <th>Verfify Status</th>
-                            <th>Make Verfify</th>
+                            <th>Verify Status</th>
+                            <th>Make Verify</th>
                             <th>Operation</th>
                         </tr>
                     </thead>
@@ -80,7 +80,7 @@ const AllSellers = () => {
                                 <td>{seller?.email}</td>
                                 <td>
                                     {seller?.sellerVerified ? (
-                                        <button className="btn btn-warning">Yes</button>
+                                        <button className="btn btn-success">Yes</button>
                                     ) : (
                                         <button className="btn btn-warning">No</button>
                                     )}
@@ -102,7 +102,7 @@ const AllSellers = () => {
                                 <td>
                                     <button
                                         onClick={() => handleDeleteSeller(seller)}
-                                        className="btn btn-warning"
+                                        className="btn btn-error"
                                     >
                                         Delete
                                     </button>

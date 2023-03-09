@@ -16,7 +16,7 @@ const MyProducts = () => {
         queryKey: ["products"],
         queryFn: async () => {
             const res = await fetch(
-                `http://localhost:5000/products/${user?.email}`
+                `https://used-product-sell-server-one.vercel.app/products/${user?.email}`
             );
             const data = await res.json();
             return data;
@@ -31,7 +31,7 @@ const MyProducts = () => {
             return;
         }
         fetch(
-            `http://localhost:5000/products/${myProduct._id}`,
+            `https://used-product-sell-server-one.vercel.app/products/${myProduct._id}`,
             {
                 method: "DELETE",
             }
@@ -57,7 +57,7 @@ const MyProducts = () => {
             return;
         }
         fetch(
-            `http://localhost:5000/products/${myProduct._id}`,
+            `https://used-product-sell-server-one.vercel.app/products/${myProduct._id}`,
             {
                 method: "PATCH",
                 headers: {
@@ -111,22 +111,22 @@ const MyProducts = () => {
                                 <td>{myProduct?.resalePrice} Taka</td>
                                 <td>
                                     {myProduct.sold ? (
-                                        <button className="btn btn-success">Sold</button>
+                                        <button className="bg-green-600 px-4 text-white rounded-md py-2">Sold</button>
                                     ) : (
-                                        <button className="btn btn-warning">Unsold</button>
+                                            <button className="bg-yellow-500 text-black px-4 text-white rounded-md py-2">Unsold</button>
                                     )}
                                 </td>
                                 <td>
                                     {myProduct.advertised ? (
                                         <button
-                                            className={`btn btn-success ${myProduct.sold && "btn-disabled"
+                                            className={`bg-emerald-800 px-4 text-white rounded-md py-2 ${myProduct.sold && "btn-disabled"
                                                 }`}
                                         >
                                             Advertising Now
                                         </button>
                                     ) : (
                                         <button
-                                            className={`btn btn-primary ${myProduct.sold && "btn-disabled"
+                                                className={`bg-emerald-800 px-4 text-white rounded-md py-2 ${myProduct.sold && "btn-disabled"
                                                 }`}
                                             onClick={() => handleAdvertiseProduct(myProduct)}
                                         >
@@ -136,7 +136,7 @@ const MyProducts = () => {
                                 </td>
                                 <td>
                                     <button
-                                        className="btn btn-error"
+                                        className="bg-red-600 px-4 text-white rounded-md py-2"
                                         onClick={() => handleDeleteProduct(myProduct)}
                                     >
                                         Delete

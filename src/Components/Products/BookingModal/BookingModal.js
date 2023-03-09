@@ -1,26 +1,15 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-
 import { AuthContext } from "../../Pages/Context/AuthProvider";
+
 
 const BookingModal = ({ productItem, setProductItem }) => {
     const { user } = useContext(AuthContext);
-
     const {
         _id,
         img,
-
-        productName
-        ,
-        location,
+        productName,
         Resale,
-        orginalPrice,
-        yearsOfuse,
-        time,
-        description,
-        phoneNumber,
-        condition,
-        sellerMail,
     } = productItem;
 
     const handleBooking = (event) => {
@@ -36,16 +25,14 @@ const BookingModal = ({ productItem, setProductItem }) => {
             img,
             userName: name,
             email,
-
-            productName
-            ,
+            productName,
             price: Resale,
             contact,
             location,
             paidStatus: false,
         };
 
-        fetch("http://localhost:5000/booking", {
+        fetch("https://used-product-sell-server-one.vercel.app/booking", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -67,7 +54,7 @@ const BookingModal = ({ productItem, setProductItem }) => {
         <>
             <input type="checkbox" id="bookingModal" className="modal-toggle" />
             <div className="modal rounded-lg">
-                <div className="modal-box w-80 rounded-md">
+                <div className="modal-box w-72 lg:w-full rounded-md overflow-y-hidden">
                     <label
                         onClick={() => setProductItem(null)}
                         htmlFor="bookingModal"
@@ -123,11 +110,11 @@ const BookingModal = ({ productItem, setProductItem }) => {
                             placeholder="Meeting Location"
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
                         />
-                        <br />
+
                         <div className="modal-action">
                             <label htmlFor="bookingModal" className="w-full">
                                 <input
-                                    className="btn w-full mb-8 bg-emerald-800 px-4 py-2 rounded-md text-white"
+                                    className="btn w-full mb-4 bg-emerald-800 px-4 py-2 rounded-md text-white"
                                     type="submit"
                                     value="Submit"
                                 />

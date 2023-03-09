@@ -63,7 +63,7 @@ const Header = () => {
                     {user?.uid ?
                         <>
                             <a href="/dashboard" className=" hover:text-red-600 px-3 py-2 rounded-md text-md font-medium text-white">Dashboard</a>
-                            <a onClick={handleLogOut} href="/Login" className=" hover:text-red-600 px-3 py-2 rounded-md text-md font-medium text-white">Sign out</a>
+                            <a onClick={handleLogOut} href="/Login" className=" hover:text-red-600 px-3 py-2 rounded-md block text-md font-medium text-white">Sign out</a>
                         </>
                         :
                         <a href="/login" className=" hover:text-red-600 px-3 py-2 rounded-md text-md font-medium text-white">Login</a>

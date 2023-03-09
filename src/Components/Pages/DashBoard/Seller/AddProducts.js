@@ -19,7 +19,6 @@ const AddProduct = () => {
         const Resale = form.resalePrice.value;
         const Price = form.orginalPrice.value;
         const Use = form.yearsOfUse.value;
-        const yearsOfBuy = form.yearsOfBuy.value;
         const time = date;
         const sellerMail = form.email.value;
         const sold = false;
@@ -36,7 +35,6 @@ const AddProduct = () => {
             Resale,
             Price,
             Use,
-            yearsOfBuy,
             time,
             sellerMail,
             sold,
@@ -50,7 +48,7 @@ const AddProduct = () => {
 
         console.log(product);
 
-        fetch("http://localhost:5000/products", {
+        fetch("https://used-product-sell-server-one.vercel.app/products", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -74,10 +72,10 @@ const AddProduct = () => {
                 <h2 className="my-5 text-center text-3xl font-semibold">
                     Add a Product
                 </h2>
-                <div className="card mt-32 rounded-lg">
+                <div className="card rounded-lg">
                     <form
                         onSubmit={handleAddProduct}
-                        className="grid grid-cols-1 gap-3 mt-10 w-80"
+                        className="grid grid-cols-1 gap-3 mt-10 w-96 ml-56"
                     >
                         <input
                             name="productName"
@@ -93,13 +91,12 @@ const AddProduct = () => {
                             <option disabled value="Category">
                                 Category
                             </option>
-                            <option value="Apple" defaultValue="Apple">
+                            <option value="Fingerprint scanners" defaultValue="Fingerprint scanners">
                                 Fingerprint scanners
                             </option>
-                            <option value="Android">Iris Recognition</option>
-                            <option value="Android">Hand geometry readers</option>
-                            <option value="Android">Voice recognition systems</option>
-                            <option value="Tablet">Signature recognition systems</option>
+                            <option value="Iris Recognition">Iris Recognition</option>
+                            <option value="Hand geometry readers">Hand geometry readers</option>
+                            <option value="Signature recognition systems">Signature recognition systems</option>
                         </select>
 
                         <input
@@ -132,12 +129,6 @@ const AddProduct = () => {
                             name="yearsOfUse"
                             type="text"
                             placeholder="Years of Use"
-                            className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
-                        />
-                        <input
-                            name="yearsOfBuy"
-                            type="text"
-                            placeholder="Years of Buy"
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
                         />
 
@@ -173,11 +164,11 @@ const AddProduct = () => {
                             <option value={"Condition"} disabled>
                                 Condition
                             </option>
-                            <option value="Fair" defaultValue="Fair">
-                                Fair
-                            </option>
                             <option value="Good">Good</option>
                             <option value="Excellent">Excellent</option>
+                            <option value="Fair" defaultValue="Fair">
+                                Outstanding
+                            </option>
                         </select>
 
                         <input
@@ -194,10 +185,8 @@ const AddProduct = () => {
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
                         />
 
-                        <br />
-
                         <input
-                            className="btn btn-accent w-full"
+                            className="bg-emerald-800 px-4 text-white rounded-md py-2 mb-8"
                             type="submit"
                             value="Submit"
                         />

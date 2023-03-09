@@ -7,7 +7,7 @@ const Reports = () => {
     const [postReviewChange, setpostReviewChnage] = useState({});
     useEffect(() => {
         axios
-            .get("http://localhost:5000/lists/reports")
+            .get("https://used-product-sell-server-one.vercel.app/lists/reports")
             .then((res) => setReports(res.data));
     }, [postReviewChange]);
 
@@ -19,7 +19,7 @@ const Reports = () => {
             return;
         }
         fetch(
-            `http://localhost:5000/products/${report._id}`,
+            `https://used-product-sell-server-one.vercel.app/products/${report._id}`,
             {
                 method: "DELETE",
             }

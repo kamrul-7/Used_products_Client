@@ -19,7 +19,7 @@ const SignUp = () => {
     const saveUser = (name, email, role) => {
         const number = "0123123123";
         const user = { name, email, contact: number, sellerVerified: false, role };
-        fetch("http://localhost:5000/users", {
+        fetch("https://used-product-sell-server-one.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

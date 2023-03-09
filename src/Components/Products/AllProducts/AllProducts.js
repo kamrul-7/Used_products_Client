@@ -1,98 +1,91 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
-import toast from "react-hot-toast";
-import { FaCheckCircle, FaTimes } from "react-icons/fa";
-import useAdmin from "../../Pages/Hooks/UseAdmin";
-
-
+import React from "react";
+import { Card } from "antd";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { AiFillStar } from "react-icons/ai";
 const AllServices = ({ product, setProductItem }) => {
     const {
-
-        img,
         productName,
+        img,
         location,
         Resale,
         Price,
         Use,
-        sellerVerified,
-        Seller
+        time,
+        reported,
+        condition,
+        phoneNumber,
+        description,
+        Seller,
 
     } = product;
-
-    const [userInfo] = useAdmin();
-
-
-
-    // console.log(sellerMail, userInfo[0]);
-
-
-
-    // const { name, sellerVerified } = sellerInfo[0];
-
-    // console.log(productName, sellerMail);
-
     return (
-        <div className="card w-full bg-base-100 shadow-2xl">
-            <figure className="px-10 pt-10">
-                <img
-                    src={img}
-                    alt="Shoes"
-                    style={{ height: "300px", objectFit: "cover" }}
-                    className="rounded-xl"
-                />
-            </figure>
-            <div className="card-body items-center text-center pb-12">
-                <h2 className="card-title text-2xl font-bold">{
-                    productName
-                }</h2>
-                <div className="divider my-0"></div>
-                <p>
-                    Location: <strong>{location}</strong>
-                </p>
-                <div className="divider my-0"></div>
-                <p>
-                    Orginal Price: <strong>{Price}</strong>
-                </p>
-                <div className="divider my-0"></div>
-                <p>
-                    Resale Price: <strong>{Resale}</strong>
-                </p>
-                <div className="divider my-0"></div>
-                <p>
-                    Years of Use: <strong>{Use}</strong>
-                </p>
-                <div className="divider my-0"></div>
+        <div>
+            <div>
+                <Card
+                    hoverable
+                    className="border-2"
+                    cover={<PhotoProvider>
+                        <PhotoView src={img}>
+                            <img src={img} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>}
 
-                <div className="divider my-0"></div>
+                >
+                    <div className="flex justify-between items-center">
+                        <div className='flex'>
+                            <AiFillStar className='text-yellow-400'></AiFillStar>
+                            <AiFillStar className='text-yellow-400'></AiFillStar>
+                            <AiFillStar className='text-yellow-400'></AiFillStar>
+                            <AiFillStar className='text-yellow-400'></AiFillStar>
+                            <AiFillStar ></AiFillStar>
+                        </div>
 
-                <div className="divider my-0"></div>
+                    </div>
+                    <h1 className='text-2xl text-emerald-600 font-semibold italic mb-4'>{productName} </h1>
 
-                <div className="divider my-0"></div>
+                    <div className="italic text-base mt-2 text-gray-800">
+                        {
+                            description.length > 100 ?
+                                <>{description.slice(0, 100) + '...'}  </>
+                                :
+                                description
+                        }
+                    </div>
+                    <div className="font-semibold ">
+                        <p className="font-bold italic text-base mt-2 text-gray-800">Condition: <span className="text-green-600">{condition}</span></p>
 
-                <div className="divider my-0"></div>
-                <p>
-                    Seller Name: <strong>{Seller}</strong>
-                </p>
-                <div className="divider my-0"></div>
+                        <p className="font-bold italic text-base mt-2 text-gray-800">Original Price: <span className="text-green-600">{Price}</span> Tk</p>
 
-                <p>
-                    Verfication Status :
-                    {sellerVerified ? (
-                        <FaCheckCircle className="inline ml-4 text-blue-500 rounded-full h-5 w-5"></FaCheckCircle>
-                    ) : (
-                        <FaTimes className="inline ml-4 text-red-600 bg-red-300 rounded-full h-5 w-5"></FaTimes>
-                    )}
-                </p>
-                <div className="divider my-0"></div>
-                <div className="card-actions mt-8">
+                        <p className="font-bold italic text-base mt-2 text-gray-800">Resale Price: <span className="text-green-600">{Resale}</span> Tk</p>
+
+                        <p className="font-bold italic text-base mt-2 text-gray-800">Use of Product: <span className="text-green-600">{Use}</span> years</p>
+
+                        <p className="font-bold italic text-base mt-2 text-gray-800">Seller name: <span className="text-green-600">{Seller}</span></p>
+
+                        <p className="font-bold italic text-base mt-2 text-gray-800">Phone Number: <span className="text-green-600">{phoneNumber}</span></p>
+
+                        <p className="font-bold text-base mt-2 text-gray-800">Location: <span className="text-green-600">{location}</span></p>
+
+                        <p className="font-bold text-base mt-2 text-gray-800">Upload Time: <span className="text-green-600">{time}</span></p>
+
+                        <p className="font-bold text-base mt-2 text-gray-800"><span className="text-green-600">{reported}</span></p>
+
+                    </div>
+
+                    <div className="flex justify-between">
+
+                        <div className="card-actions mt-8 lg:ml-24 ml-16">
+
                     <label
                         htmlFor="bookingModal"
                         onClick={() => setProductItem(product)}
-                        className="btn bg-emerald-800 px-4 py-2 rounded-md text-white"
+                                className=" bg-emerald-800 px-4 py-2 rounded-md text-white hover:bg-gray-800 font-semibold"
                     >
                         Book Now
                     </label>
                 </div>
+            </div>
+                </Card>
             </div>
         </div>
     );
