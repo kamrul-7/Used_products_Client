@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "use-product"
-  }
+    "default": "use-product",
+    "build": "use-product"
+  },
+  "targets": {},
+  "etags": {}
 }
