@@ -186,7 +186,7 @@ const AddProduct = () => {
                         />
 
                         <input
-                            className="bg-emerald-800 px-4 text-white rounded-md py-2 mb-8"
+                            className="bg-emerald-800 px-4 text-white rounded-md py-2 mb-12"
                             type="submit"
                             value="Submit"
                         />

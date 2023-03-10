@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { FaTimes } from "react-icons/fa";
+import useAdmin from "../../../Hooks/UseAdmin";
+import Loading from "../../../../Others/Loading/Loading";
 
 const AllSellers = () => {
     const [sellers, setSellers] = useState([]);
@@ -58,6 +60,10 @@ const AllSellers = () => {
                 }
             });
     };
+    const [isAdminLoading] = useAdmin();
+    if (isAdminLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className="overflow-x-auto">
@@ -80,20 +86,20 @@ const AllSellers = () => {
                                 <td>{seller?.email}</td>
                                 <td>
                                     {seller?.sellerVerified ? (
-                                        <button className="btn btn-success">Yes</button>
+                                        <button className="px-4 py-1 bg-green-600 text-white">Yes</button>
                                     ) : (
-                                        <button className="btn btn-warning">No</button>
+                                            <button className="px-4 py-1 bg-yellow-400">No</button>
                                     )}
                                 </td>
                                 <td>
                                     {seller?.sellerVerified ? (
-                                        <button className="btn btn-primary btn-disabled">
+                                        <button className="px-4 py-1 bg-gray-400 text-white disabled">
                                             Verified
                                         </button>
                                     ) : (
                                         <button
                                             onClick={() => handleVerifySeller(seller)}
-                                            className="btn btn-secondary"
+                                                className="px-4 py-1 bg-yellow-400 hover:bg-yellow-500"
                                         >
                                             Make Verify
                                         </button>
@@ -102,7 +108,7 @@ const AllSellers = () => {
                                 <td>
                                     <button
                                         onClick={() => handleDeleteSeller(seller)}
-                                        className="btn btn-error"
+                                        className="px-4 py-1 bg-red-600 hover:bg-red-700 text-white"
                                     >
                                         Delete
                                     </button>

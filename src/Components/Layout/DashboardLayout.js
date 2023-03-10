@@ -28,16 +28,16 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-80">
                         {userInfo[0].role === "admin" && (
                             <>
-                                <li>
+                                <li className="bg-green-600 text-white">
                                     <Link to="/dashboard/allsellers">All sellers</Link>
                                 </li>
-                                <li>
+                                <li className="bg-gray-300 my-8">
                                     <Link to="/dashboard/allbuyers">All Buyers</Link>
                                 </li>
-                                <li>
+                                <li className="bg-green-600 text-white">
                                     <Link to="/dashboard/reports">Reported Items</Link>
                                 </li>
                             </>
@@ -45,17 +45,17 @@ const DashboardLayout = () => {
                         {userInfo[0].role === "buyer" && (
                             <>
                                 <li>
-                                    <Link to="/dashboard/orders">My Orders</Link>
+                                    <Link className="bg-green-600 text-white" to="/dashboard/orders">My Orders</Link>
                                 </li>
                             </>
                         )}
                         {userInfo[0].role === "seller" && (
                             <>
                                 <li>
-                                    <Link to="/dashboard/addproduct">Add a Product</Link>
+                                    <Link className="bg-green-600 text-white" to="/dashboard/addproduct">Add a Product</Link>
                                 </li>
                                 <li>
-                                    <Link to="/dashboard/myproducts">My Products</Link>
+                                    <Link className="bg-gray-300 my-8" to="/dashboard/myproducts">My Products</Link>
                                 </li>
                             </>
                         )}

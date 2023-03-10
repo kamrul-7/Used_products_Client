@@ -4,7 +4,7 @@ const About = () => {
     return (
         <div>
 
-            <div className="card w-56 lg:w-full bg-base-100 shadow-xl image-full rounded-none !important">
+            <div className="card w-56 lg:w-full ml-4 lg:ml-0 bg-base-100 shadow-xl image-full rounded-none !important">
                 <figure><img src="https://recfaces.com/wp-content/uploads/2021/08/biometric-devices-%E2%80%94-complete-guide-on-technology.jpg" alt="Shoes" /></figure>
                 <div className="card-body">
                     <div className='text-center'>

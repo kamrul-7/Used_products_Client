@@ -67,7 +67,7 @@ const router = createBrowserRouter([
                 ),
                 loader: ({ params }) =>
                     fetch(
-                        `https://used-product-sell-server-one.vercel.app/categories/${params.category}`
+                        `https://used-product-sell-server-one.vercel.app/categories/${params.id}`
                     ),
             },
         ],

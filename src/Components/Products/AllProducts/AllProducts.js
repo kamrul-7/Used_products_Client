@@ -2,35 +2,65 @@ import React from "react";
 import { Card } from "antd";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { AiFillStar } from "react-icons/ai";
+import { FaCheckCircle, FaTimes } from "react-icons/fa";
+import useAdmin from "../../Pages/Hooks/UseAdmin";
+import { toast } from "react-hot-toast";
+import Loading from "../../Others/Loading/Loading";
 const AllServices = ({ product, setProductItem }) => {
     const {
-        productName,
+        _id,
         img,
+        productName,
         location,
         Resale,
         Price,
         Use,
         time,
-        reported,
-        condition,
-        phoneNumber,
         description,
+        phoneNumber,
+        condition,
+        sellerMail,
         Seller,
-
+        reported
     } = product;
+
+    const [userInfo, isAdminLoading] = useAdmin(sellerMail);
+    if (isAdminLoading) {
+        return <Loading></Loading>
+    }
+
+    //Report product
+    const handleReportProduct = (product) => {
+        const confirmReport = window.confirm(`Report ${product.productName} ??`);
+        if (!confirmReport) {
+            toast.error("Report process canceled by seller");
+            return;
+        }
+        fetch(
+            `https://used-product-sell-server-one.vercel.app/report/${product._id}`,
+            {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ reported: true }),
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    // refetch();
+                    toast.success("Report done Successfully");
+                }
+            });
+    };
+
+    const { name, sellerVerified } = userInfo[0];
     return (
         <div>
             <div>
-                <Card
-                    hoverable
-                    className="border-2"
-                    cover={<PhotoProvider>
-                        <PhotoView src={img}>
-                            <img src={img} alt="" />
-                        </PhotoView>
-                    </PhotoProvider>}
-
-                >
+                <Card>
+                    <img src={img} alt="" />
                     <div className="flex justify-between items-center">
                         <div className='flex'>
                             <AiFillStar className='text-yellow-400'></AiFillStar>
@@ -69,12 +99,19 @@ const AllServices = ({ product, setProductItem }) => {
                         <p className="font-bold text-base mt-2 text-gray-800">Upload Time: <span className="text-green-600">{time}</span></p>
 
                         <p className="font-bold text-base mt-2 text-gray-800"><span className="text-green-600">{reported}</span></p>
-
+                        <p>
+                            Verfication Status :
+                            {sellerVerified ? (
+                                <FaCheckCircle className="inline ml-4 text-blue-500 rounded-full h-5 w-5"></FaCheckCircle>
+                            ) : (
+                                <FaTimes className="inline ml-4 text-red-600 bg-red-300 rounded-full h-5 w-5"></FaTimes>
+                            )}
+                        </p>
                     </div>
 
                     <div className="flex justify-between">
 
-                        <div className="card-actions mt-8 lg:ml-24 ml-16">
+                        <div className="card-actions mt-8 ">
 
                     <label
                         htmlFor="bookingModal"
@@ -82,7 +119,13 @@ const AllServices = ({ product, setProductItem }) => {
                                 className=" bg-emerald-800 px-4 py-2 rounded-md text-white hover:bg-gray-800 font-semibold"
                     >
                         Book Now
-                    </label>
+                            </label>
+                            <button
+                                onClick={() => handleReportProduct(product)}
+                                className="bg-red-400 px-2 py-2 rounded-md text-white hover:bg-gray-800 font-semibold"
+                            >
+                                Report to admin
+                            </button>
                 </div>
             </div>
                 </Card>

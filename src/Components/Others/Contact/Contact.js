@@ -1,8 +1,15 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import useAdmin from '../../Pages/Hooks/UseAdmin';
+import Loading from '../Loading/Loading';
+
 import './Contact.css'
 const Contact = () => {
+    const [isAdminLoading] = useAdmin();
+    if (isAdminLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className='text-center'>

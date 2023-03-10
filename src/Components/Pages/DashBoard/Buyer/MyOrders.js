@@ -58,19 +58,19 @@ const MyOrders = () => {
                                 <td>{booking?.price} Taka</td>
                                 <td>
                                     {booking?.paidStatus ? (
-                                        <button className="btn btn-success">Paid</button>
+                                        <button className="px-4 py-2 bg-green-500 text-white">Paid</button>
                                     ) : (
-                                        <button className="btn btn-warning">Not Paid</button>
+                                            <button className="px-4 py-2 bg-red-300">Not Paid</button>
                                     )}
                                 </td>
                                 <td>
                                     {booking?.paidStatus ? (
-                                        <button className="btn btn-primary btn-disabled">
+                                        <button className="px-4 py-2 text-white bg-gray-500 disabled">
                                             Done Payment
                                         </button>
                                     ) : (
                                         <Link
-                                            className="btn btn-warning"
+                                                className="px-4 py-2 hover:text-white bg-yellow-500 hover:bg-green-800 "
                                             to={`/dashboard/payment/${booking._id}`}
                                         >
                                             Make Payment

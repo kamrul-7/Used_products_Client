@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "use-product",
+    "default": "used-product-5b43d",
     "build": "use-product"
   },
   "targets": {},

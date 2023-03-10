@@ -53,7 +53,7 @@ const AllBuyers = () => {
                                 <td>
                                     <button
                                         onClick={() => handleDeleteBuyer(buyer)}
-                                        className="btn btn-warning"
+                                        className="px-4 py-2 bg-red-500 text-white hover:bg-red-600"
                                     >
                                         Delete
                                     </button>

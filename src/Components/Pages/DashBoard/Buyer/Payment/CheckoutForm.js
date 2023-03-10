@@ -132,6 +132,15 @@ const CheckoutForm = ({ booking }) => {
                     </p>
                 </div>
             )}
+            <div className="mt-12 italic">
+
+                <p>Visa	4242424242424242 <br />
+
+                    Visa (debit)	4000056655665556 <br />
+                    Mastercard	5555555555554444 <br />
+                    American Express	378282246310005 <br />
+                </p>
+            </div>
         </>
     );
 };

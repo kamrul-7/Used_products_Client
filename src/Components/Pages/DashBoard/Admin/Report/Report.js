@@ -63,7 +63,7 @@ const Reports = () => {
                                 <td>
                                     <button
                                         onClick={() => handleDeleteProduct(report)}
-                                        className="btn btn-warning"
+                                        className="px-4 py-1 bg-red-500 text-white hover:bg-red-600"
                                     >
                                         Delete
                                     </button>

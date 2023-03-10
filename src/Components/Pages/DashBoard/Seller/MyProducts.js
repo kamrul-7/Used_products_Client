@@ -111,9 +111,9 @@ const MyProducts = () => {
                                 <td>{myProduct?.resalePrice} Taka</td>
                                 <td>
                                     {myProduct.sold ? (
-                                        <button className="bg-green-600 px-4 text-white rounded-md py-2">Sold</button>
+                                        <button className="bg-green-600 px-4 text-white  py-2">Sold</button>
                                     ) : (
-                                            <button className="bg-yellow-500 text-black px-4 text-white rounded-md py-2">Unsold</button>
+                                            <button className="bg-yellow-500 text-black px-4 py-2">Unsold</button>
                                     )}
                                 </td>
                                 <td>
@@ -126,12 +126,13 @@ const MyProducts = () => {
                                         </button>
                                     ) : (
                                         <button
-                                                className={`bg-emerald-800 px-4 text-white rounded-md py-2 ${myProduct.sold && "btn-disabled"
-                                                }`}
-                                            onClick={() => handleAdvertiseProduct(myProduct)}
-                                        >
-                                            Make Advertise
-                                        </button>
+                                                className={`bg-green-500 px-4 text-black py-2 ${myProduct.sold && "disabled bg-gray-300 text-black pointer-events-none"
+                                                    }`}
+                                                onClick={() => handleAdvertiseProduct(myProduct)}
+                                            >
+                                                Make Advertise
+                                            </button>
+
                                     )}
                                 </td>
                                 <td>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Loading from "../../Others/Loading/Loading";
 import AllServices from "../AllProducts/AllProducts";
 import BookingModal from "../BookingModal/BookingModal";
 
@@ -18,6 +19,9 @@ const Items = () => {
         };
         fetchServices();
     }, []);
+    if (isFetching) {
+        return <Loading></Loading>
+    }
     return (
         <>
             <div className='text-center'>
