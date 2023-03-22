@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/AllProducts',
-                element: <Items></Items>
+                element: <PrivateRoute><Items></Items></PrivateRoute>
             },
             {
                 path: '/EachItem',
