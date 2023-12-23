@@ -67,7 +67,7 @@ const router = createBrowserRouter([
                 ),
                 loader: ({ params }) =>
                     fetch(
-                        `https://used-product-sell-server-one.vercel.app/categories/${params.id}`
+                        `http://localhost:5000/categories/${params.id}`
                     ),
             },
         ],
@@ -105,7 +105,7 @@ const router = createBrowserRouter([
                 ),
                 loader: ({ params }) =>
                     fetch(
-                        `https://used-product-sell-server-one.vercel.app/bookings/${params.id}`
+                        `http://localhost:5000/bookings/${params.id}`
                     ),
             },
             {
@@ -126,6 +126,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/allsellers",
+                
                 element: (
                     <AdminRoute>
                         <AllSellers></AllSellers>

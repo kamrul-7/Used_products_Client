@@ -9,30 +9,31 @@ const BookingModal = ({ productItem, setProductItem }) => {
         _id,
         img,
         productName,
-        Resale,
+        Price,
     } = productItem;
 
     const handleBooking = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const Price = form.price.value;
         const email = form.email.value;
         const contact = form.phone.value;
         const location = form.location.value;
-
+console.log(Price)
         const booking = {
             orginalProductId: _id,
             img,
             userName: name,
             email,
             productName,
-            price: Resale,
+            price: Price,
             contact,
             location,
             paidStatus: false,
         };
 
-        fetch("https://used-product-sell-server-one.vercel.app/booking", {
+        fetch("http://localhost:5000/booking", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -93,7 +94,7 @@ const BookingModal = ({ productItem, setProductItem }) => {
                         <input
                             name="price"
                             type="text"
-                            defaultValue={Resale}
+                            defaultValue={Price}
                             disabled
                             placeholder="price"
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"

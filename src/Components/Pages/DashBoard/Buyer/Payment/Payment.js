@@ -13,6 +13,7 @@ const Payment = () => {
     const booking = useLoaderData();
     const {
         userName,
+        img,
         price,
         paidStatus,
         contact,
@@ -23,8 +24,14 @@ const Payment = () => {
     //   console.log(data);
     return (
         <div>
-            <h3 className="text-3xl text-center">Payment for {productName}</h3>
-            <p className="text-xl text-center">Please Pay {price} for this Item</p>
+            
+          <div className="flex justify-between">
+            <div className="ml-24">
+            <h3 className="text-3xl text-center">Payment for <span className="text-red-500">{productName}</span></h3>
+            <p className="text-xl text-center">Please Pay {price} TK for this Item</p>
+            </div>
+            <img className="w-24 mr-44" src={img}></img>
+          </div>
             <div className="w-96 my-12">
                 <Elements stripe={stripePromise}>
                     <CheckoutForm booking={booking} />

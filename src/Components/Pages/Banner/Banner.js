@@ -1,31 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import img from '../../../Assets/2.png'
-
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import "./Banner.css";
+import img1 from "../../../Assets/slider-1.jpg";
+import img2 from "../../../Assets/slider-2.jpg";
+import img4 from "../../../Assets/slider-4.jpg";
+import { Link } from "react-router-dom";
 const Banner = () => {
-    return (
-        <div className='bg-gray-200 md:flex justify-between lg:p-16 p-6'>
-            <div className=' w-72 lg:w-1/2'>
-                <img src={img} alt="" />
+  return (
+    <div className="-mt-16 text-center">
+      <Carousel autoPlay infiniteLoop >
+        <div className="relative">
+          <img src={img1} />
+          <h1 className="absolute top-12 md:top-32 px-4 py-3 md:pl-36 banner md:font-bold font-semibold text-xl md:text-4xl text-green-800">
+            Organic fresh fruits for <br /> your health <br />
+            <div className="mt-20">
+            <Link to="/Allproducts"  className="click lg:mt-12 mt-4 px-4 lg:px-6 py-1 lg:py-2 text-sm lg:text-xl rounded-sm">
+              Shop Now 
+            </Link>
             </div>
-            <div className=' mt-16'>
-                <h2 className='md:text-3xl sm:text-2xl text-xl text-gray-900 font-medium my-4 text-center'>Secure Your Premises with bioSecure <br /> Biometric Access Control Systems</h2>
-                <div className='text-center'>
-                    <p>Check out our exclusive collection of Biometric Access Control Systems. <br /> We offer a variety of options suitable for different needs and settings.</p>
-                    <Link to="AllProducts">
-                    <button className="bg-emerald-800 text-white hover:bg-gray-800 transition hover:text-white md:px-4 px-2 md:py-1.5 py-1.5 rounded text-xl mt-6">
-                        Explore BioSecure
-                    </button>
-                    </Link>
-                    <button className="text-gray-800 border-2 border-gray-800 hover:bg-gray-800 transition hover:text-white md:px-4 px-2 md:py-1 py-0.5 rounded ml-4 text-xl">
-                        Dashboard
-                    </button>
-                </div>
-            </div>
-
+          </h1>
         </div>
-    );
+        <div className="relative">
+          <img src={img2} />
+          <h1 className="absolute top-12 md:top-32 px-4 py-3 md:pl-36 banner md:font-bold font-semibold text-xl md:text-4xl text-green-800">
+            {" "}
+            Refresh Your Body, Mind,
+            <br /> and Soul <br />
+            <div className="mt-20">
+            <Link to="/Allproducts"  className="click lg:mt-12 mt-4 px-4 lg:px-6 py-1 lg:py-2 text-sm lg:text-xl rounded-sm">
+              Shop Now 
+            </Link>
+            </div>
+          </h1>
+        </div>
+
+        <div className="relative">
+          <img src={img4} />
+          <h1 className="absolute top-12 md:top-32 px-4 py-3 md:pl-36 banner md:font-bold font-semibold text-xl md:text-4xl text-green-800">
+            Revitalize Your Life with <br /> Organic Freshness! <br />
+            <div className="mt-20">
+            <Link to="/Allproducts"  className="click lg:mt-12 mt-4 px-4 lg:px-6 py-1 lg:py-2 text-sm lg:text-xl rounded-sm">
+              Shop Now 
+            </Link>
+            </div>
+          </h1>
+        </div>
+      </Carousel>
+    </div>
+  );
 };
 
 export default Banner;

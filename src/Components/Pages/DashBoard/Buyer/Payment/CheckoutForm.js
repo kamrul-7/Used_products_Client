@@ -1,5 +1,6 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import Cards from 'react-credit-cards';
 
 const CheckoutForm = ({ booking }) => {
     const [cardError, setCardError] = useState("");
@@ -8,6 +9,8 @@ const CheckoutForm = ({ booking }) => {
     const [transactionId, setTransactionId] = useState("");
     const [clientSecret, setClientSecret] = useState("");
 
+
+    
     const stripe = useStripe();
     const elements = useElements();
     const { price, email, userName, _id, orginalProductId } = booking;
@@ -15,7 +18,7 @@ const CheckoutForm = ({ booking }) => {
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         fetch(
-            "https://used-product-sell-server-one.vercel.app/create-payment-intent",
+            "http://localhost:5000/create-payment-intent",
             {
                 method: "POST",
                 headers: {
@@ -27,6 +30,25 @@ const CheckoutForm = ({ booking }) => {
             .then((res) => res.json())
             .then((data) => setClientSecret(data.clientSecret));
     }, [price]);
+
+
+    const [cardInfo, setCardInfo] = useState({
+        cvc: '',
+        expiry: '',
+        focus: '',
+        name: '',
+        number: ''
+      });
+    
+      const handleInputFocus = (e) => {
+        setCardInfo({ ...cardInfo, focus: e.target.name });
+      };
+    
+      const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setCardInfo({ ...cardInfo, [name]: value });
+      }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -76,7 +98,7 @@ const CheckoutForm = ({ booking }) => {
                 productID: orginalProductId,
             };
 
-            fetch("https://used-product-sell-server-one.vercel.app/payments/done", {
+            fetch("http://localhost:5000/payments/done", {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -98,7 +120,7 @@ const CheckoutForm = ({ booking }) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <CardElement
+        <CardElement
                     options={{
                         style: {
                             base: {

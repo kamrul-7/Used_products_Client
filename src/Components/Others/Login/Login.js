@@ -28,7 +28,7 @@ const Login = () => {
             sellerVerified: false,
             role: "buyer",
         };
-        fetch("https://used-product-sell-server-one.vercel.app/users", {
+        fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -88,7 +88,7 @@ const Login = () => {
                     <div className="text-white">
                         <div className="mb-8 flex flex-col items-center">
                             <img src="https://abossmart.com/images/login1.png" width="150" alt="" srcset="" />
-                            <h1 className="mb-2 text-2xl">BioSecure</h1>
+                            <h1 className="mb-2 text-2xl">Grocery 2.0</h1>
                             <span className="text-gray-300">Enter Login Details</span>
                         </div>
                         <form onSubmit={handleSubmit(handleLogin)} className='-mt-12'>

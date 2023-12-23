@@ -16,7 +16,7 @@ const MyProducts = () => {
         queryKey: ["products"],
         queryFn: async () => {
             const res = await fetch(
-                `https://used-product-sell-server-one.vercel.app/products/${user?.email}`
+                `http://localhost:5000/products/${user?.email}`
             );
             const data = await res.json();
             return data;
@@ -31,7 +31,7 @@ const MyProducts = () => {
             return;
         }
         fetch(
-            `https://used-product-sell-server-one.vercel.app/products/${myProduct._id}`,
+            `http://localhost:5000/products/${myProduct._id}`,
             {
                 method: "DELETE",
             }
@@ -57,7 +57,7 @@ const MyProducts = () => {
             return;
         }
         fetch(
-            `https://used-product-sell-server-one.vercel.app/products/${myProduct._id}`,
+            `http://localhost:5000/products/${myProduct._id}`,
             {
                 method: "PATCH",
                 headers: {
@@ -108,7 +108,7 @@ const MyProducts = () => {
                                     </div>
                                 </td>
                                 <td>{myProduct?.productName}</td>
-                                <td>{myProduct?.resalePrice} Taka</td>
+                                <td>{myProduct?.Price} Taka</td>
                                 <td>
                                     {myProduct.sold ? (
                                         <button className="bg-green-600 px-4 text-white  py-2">Sold</button>

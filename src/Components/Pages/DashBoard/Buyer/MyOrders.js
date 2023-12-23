@@ -16,9 +16,10 @@ const MyOrders = () => {
         queryKey: ["booking"],
         queryFn: async () => {
             const res = await fetch(
-                `https://used-product-sell-server-one.vercel.app/booking/${user?.email}`
+                `http://localhost:5000/booking/${user?.email}`
             );
             const data = await res.json();
+            // console.log(data)
             return data;
         },
     });
@@ -45,6 +46,7 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {bookings.map((booking, i) => (
+                            
                             <tr key={i}>
                                 <th>{i + 1}</th>
                                 <td>

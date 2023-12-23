@@ -1,25 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Categories from "./Categories";
 
 const EachCategory = ({ category }) => {
-    const { categoryName, img } = category;
+    console.log(category)
+    const { categoryName,productName,Price, img } = category;
     return (
-        <div className="card w-full bg-base-100 border-2 hover:shadow-2xl">
-            <figure className="px-10 pt-10">
-                <img src={img} alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{categoryName}</h2>
-                <div className="card-actions">
-                    <Link
-                        to={`categories/${categoryName}`}
-                        className="text-white py-2 px-4 font-semibold rounded-md bg-emerald-800 mt-6 hover:bg-gray-800"
-                    >
-                        View Items
-                    </Link>
+        <div>
+            <div>
+                <div className="card w-72 h-80 mt-8 shadow-xl ml-20">
+                    <figure><img className=" mt-4 w-44" src={img} alt="Product" /></figure>
+                    <div className="card-body">
+                       
+                        <Link to="/Allproducts"  className=" px-4 ml-20 lg:px-6 py-1 lg:py-2 text-sm lg:text-xl font-bold rounded-sm">
+                        {categoryName}
+            </Link>
+
+                       </div>
+                    </div>
                 </div>
             </div>
-        </div>
+               
     );
 };
 

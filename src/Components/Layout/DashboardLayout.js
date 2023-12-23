@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import Loading from "../Others/Loading/Loading";
 import { AuthContext } from "../Pages/Context/AuthProvider";
 import Footer from "../Pages/Footer/Footer";
-import Header from "../Pages/Header/Header";
+import Header from "../Pages/Header/NavBar";
 import useAdmin from "../Pages/Hooks/UseAdmin";
 
 
@@ -29,7 +29,8 @@ const DashboardLayout = () => {
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80">
-                        {userInfo[0].role === "admin" && (
+                        
+                        {/* {userInfo[0].role === "admin" &&  console.log(userInfo[0].role )(
                             <>
                                 <li className="bg-green-600 text-white">
                                     <Link to="/dashboard/allsellers">All sellers</Link>
@@ -41,7 +42,7 @@ const DashboardLayout = () => {
                                     <Link to="/dashboard/reports">Reported Items</Link>
                                 </li>
                             </>
-                        )}
+                        )} */}
                         {userInfo[0].role === "buyer" && (
                             <>
                                 <li>

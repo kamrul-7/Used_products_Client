@@ -13,42 +13,32 @@ const AddProduct = () => {
         const productName = form.productName.value;
         const categoryName = form.categoryName.value;
         const Seller = form.name.value;
-        const condition = form.condition.value;
         const img = form.img.value;
-        const location = form.location.value;
-        const Resale = form.resalePrice.value;
-        const Price = form.orginalPrice.value;
-        const Use = form.yearsOfUse.value;
-        const time = date;
+        const Price = form.Price.value;
         const sellerMail = form.email.value;
         const sold = false;
         const advertised = false;
         const reported = false;
-        const contact = form.phone.value;
         const description = form.description.value;
 
         const product = {
             productName,
             categoryName,
             img,
-            location,
-            Resale,
+           
             Price,
-            Use,
-            time,
+          
             sellerMail,
             sold,
             advertised,
             reported,
-            condition,
-            phoneNumber: contact,
             description,
             Seller
         };
 
         console.log(product);
 
-        fetch("https://used-product-sell-server-one.vercel.app/products", {
+        fetch("http://localhost:5000/products", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -92,11 +82,13 @@ const AddProduct = () => {
                                 Category
                             </option>
                             <option value="Fingerprint scanners" defaultValue="Fingerprint scanners">
-                                Fingerprint scanners
+                               Vegetable
                             </option>
-                            <option value="Iris Recognition">Iris Recognition</option>
-                            <option value="Hand geometry readers">Hand geometry readers</option>
-                            <option value="Signature recognition systems">Signature recognition systems</option>
+                            <option value="Iris Recognition">Dry Food</option>
+                            <option value="Hand geometry readers">Fish</option>
+                            <option value="Hand geometry readers">Meat</option>
+                            <option value="Hand geometry readers">Oil</option>
+                            <option value="Signature recognition systems">Masala</option>
                         </select>
 
                         <input
@@ -106,40 +98,17 @@ const AddProduct = () => {
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
                         />
 
-                        <input
-                            name="location"
-                            type="text"
-                            placeholder="Meeting Location"
-                            className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
-                        />
+                       
 
+                       
                         <input
-                            name="resalePrice"
+                            name="Price"
                             type="text"
-                            placeholder="Resell Price"
+                            placeholder=" Price"
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
                         />
-                        <input
-                            name="orginalPrice"
-                            type="text"
-                            placeholder="Orginal Price"
-                            className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
-                        />
-                        <input
-                            name="yearsOfUse"
-                            type="text"
-                            placeholder="Years of Use"
-                            className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
-                        />
-
-                        <input
-                            name="time"
-                            type="text"
-                            defaultValue={date}
-                            disabled
-                            placeholder="Time"
-                            className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
-                        />
+                       
+                        
                         <input
                             name="email"
                             type="email"
@@ -156,28 +125,7 @@ const AddProduct = () => {
                             placeholder="Email Address"
                             className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
                         />
-                        <select
-                            className="select select-bordered w-full px-2 rounded-md py-1 bg-white"
-                            defaultValue={"Condition"}
-                            name="condition"
-                        >
-                            <option value={"Condition"} disabled>
-                                Condition
-                            </option>
-                            <option value="Good">Good</option>
-                            <option value="Excellent">Excellent</option>
-                            <option value="Fair" defaultValue="Fair">
-                                Outstanding
-                            </option>
-                        </select>
-
-                        <input
-                            name="phone"
-                            type="text"
-                            placeholder="Phone Number"
-                            className="input w-full input-bordered px-2 rounded-md py-1 bg-white"
-                        />
-
+                    
                         <input
                             name="description"
                             type="text"

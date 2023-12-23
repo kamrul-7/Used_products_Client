@@ -7,7 +7,7 @@ const Error = () => {
         <div>
             <div className='flex justify-center mt-12 my-8'>
                 <h2 className='text-center font-bold lg:text-2xl text-gray-600'>Page not Found</h2>
-                <Link to='/'><a className='ml-4 text-center py-2 font-semibold px-4 rounded-md lg:text-xl text-white my-8 bg-emerald-800'>Go to home</a></Link>
+                <Link to='/' className='ml-4 text-center py-2 font-semibold px-4 rounded-md lg:text-xl text-white my-8 bg-emerald-800'>Go to home</Link>
             </div>
             <div>
                 <div className='sm:h-12 lg:hidden '><Lottie animationData={groovyWalkAnimation} loop={true} /></div>

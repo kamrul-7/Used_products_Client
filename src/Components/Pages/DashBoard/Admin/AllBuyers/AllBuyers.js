@@ -7,7 +7,7 @@ const AllBuyers = () => {
     const [postReviewChange, setpostReviewChnage] = useState({});
     useEffect(() => {
         axios
-            .get("https://used-product-sell-server-one.vercel.app/lists/buyer")
+            .get("http://localhost:5000/lists/buyer")
             .then((res) => setBuyers(res.data));
     }, [postReviewChange]);
 
@@ -19,7 +19,7 @@ const AllBuyers = () => {
             return;
         }
         fetch(
-            `https://used-product-sell-server-one.vercel.app/users/${buyer._id}`,
+            `http://localhost:5000/users/${buyer._id}`,
             {
                 method: "DELETE",
             }

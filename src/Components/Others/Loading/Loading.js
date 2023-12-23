@@ -10,7 +10,7 @@ const Loading = () => {
     const { View } = useLottie(options);
     return (
         <div>
-            <div className="h-20 bg-black"></div>
+            <div className=""></div>
             <div className='h-56 w-96 mt-8 mx-auto mb-44'>
                 <>{View}</>
             </div>
